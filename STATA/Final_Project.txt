@@ -1,0 +1,48 @@
+	(1)
+VARIABLES	logAAV
+	
+FB_Velo_avg	0.140**
+	(0.063)
+1.lefty	-4.129
+	(9.124)
+0b.lefty#co.FB_Velo_avg	0.000
+	(0.000)
+1.lefty#c.FB_Velo_avg	0.044
+	(0.097)
+1.SP	-1.127
+	(9.267)
+0b.SP#co.FB_Velo_avg	0.000
+	(0.000)
+1.SP#c.FB_Velo_avg	0.022
+	(0.098)
+0b.lefty#0b.SP	0.000
+	(0.000)
+0b.lefty#1o.SP	0.000
+	(0.000)
+1o.lefty#0b.SP	0.000
+	(0.000)
+1.lefty#1.SP	1.139
+	(12.448)
+0b.lefty#0b.SP#co.FB_Velo_avg	0.000
+	(0.000)
+0b.lefty#1o.SP#co.FB_Velo_avg	0.000
+	(0.000)
+1o.lefty#0b.SP#co.FB_Velo_avg	0.000
+	(0.000)
+1.lefty#1.SP#c.FB_Velo_avg	-0.009
+	(0.133)
+Age	-0.001
+	(0.028)
+careerWAR	0.020***
+	(0.005)
+FIP	-0.261***
+	(0.092)
+large_market	0.042
+	(0.129)
+Constant	2.565
+	(6.390)
+	
+Observations	171
+R-squared	0.487
+Robust standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

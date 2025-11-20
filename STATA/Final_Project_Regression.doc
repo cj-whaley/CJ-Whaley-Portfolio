@@ -1,0 +1,56 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx4320\clbrdrt\brdrs\cellx5760
+\ql \cell\qc (1)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx4320\cellx5760
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx5760
+\ql VARIABLES\cell\qc logAAV\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx4320\cellx5760
+\ql \cell\qc \cell\row
+\ql FB_Velo_avg\cell\qc 0.140**\cell\row
+\ql \cell\qc (0.0635)\cell\row
+\ql 1.lefty\cell\qc -4.129\cell\row
+\ql \cell\qc (9.124)\cell\row
+\ql 0b.lefty#co.FB_Velo_avg\cell\qc 0\cell\row
+\ql \cell\qc (0)\cell\row
+\ql 1.lefty#c.FB_Velo_avg\cell\qc 0.0441\cell\row
+\ql \cell\qc (0.0971)\cell\row
+\ql 1.SP\cell\qc -1.127\cell\row
+\ql \cell\qc (9.267)\cell\row
+\ql 0b.SP#co.FB_Velo_avg\cell\qc 0\cell\row
+\ql \cell\qc (0)\cell\row
+\ql 1.SP#c.FB_Velo_avg\cell\qc 0.0222\cell\row
+\ql \cell\qc (0.0978)\cell\row
+\ql 0b.lefty#0b.SP\cell\qc 0\cell\row
+\ql \cell\qc (0)\cell\row
+\ql 0b.lefty#1o.SP\cell\qc 0\cell\row
+\ql \cell\qc (0)\cell\row
+\ql 1o.lefty#0b.SP\cell\qc 0\cell\row
+\ql \cell\qc (0)\cell\row
+\ql 1.lefty#1.SP\cell\qc 1.139\cell\row
+\ql \cell\qc (12.45)\cell\row
+\ql 0b.lefty#0b.SP#co.FB_Velo_avg\cell\qc 0\cell\row
+\ql \cell\qc (0)\cell\row
+\ql 0b.lefty#1o.SP#co.FB_Velo_avg\cell\qc 0\cell\row
+\ql \cell\qc (0)\cell\row
+\ql 1o.lefty#0b.SP#co.FB_Velo_avg\cell\qc 0\cell\row
+\ql \cell\qc (0)\cell\row
+\ql 1.lefty#1.SP#c.FB_Velo_avg\cell\qc -0.00895\cell\row
+\ql \cell\qc (0.133)\cell\row
+\ql Age\cell\qc -0.000749\cell\row
+\ql \cell\qc (0.0284)\cell\row
+\ql careerWAR\cell\qc 0.0204***\cell\row
+\ql \cell\qc (0.00533)\cell\row
+\ql FIP\cell\qc -0.261***\cell\row
+\ql \cell\qc (0.0921)\cell\row
+\ql large_market\cell\qc 0.0423\cell\row
+\ql \cell\qc (0.129)\cell\row
+\ql Constant\cell\qc 2.565\cell\row
+\ql \cell\qc (6.390)\cell\row
+\ql \cell\qc \cell\row
+\ql Observations\cell\qc 171\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx5760
+\ql R-squared\cell\qc 0.487\cell\row
+\pard\qc
+Robust standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}

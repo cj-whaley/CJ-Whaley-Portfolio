@@ -1,0 +1,268 @@
+------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/cjwhaley/Desktop/ECO 420/Baseball Project.log
+  log type:  text
+ opened on:   4 May 2025, 22:49:14
+
+. 
+. // Sample Selection
+. keep if Pos=="SP" | Pos=="RP" //keep only pitchers
+(206 observations deleted)
+
+. drop if FB_Velo_avg== 0 // keep only pitchers with avg velo data
+(21 observations deleted)
+
+. drop if AAV==0 // keep only pitchers who signed a deal
+(37 observations deleted)
+
+. 
+. // Generate market size dummy
+. gen team=""
+(171 missing values generated)
+
+. replace team=PrevTeam if SigningTeam==""
+variable team was str1 now str3
+(83 real changes made)
+
+. replace team=SigningTeam if SigningTeam!=""
+(88 real changes made)
+
+. gen large_market=0
+
+. replace large_market=1 if team=="LAD" | team=="LAA" | team=="NYY" | team=="NYM" | team=="BOS" | team=="CHC
+> " | team=="CHW" | team=="PHI"
+(59 real changes made)
+
+. // sets large market teams as LAD, LAA, NYY, NYM, BOS, CHC, CHW, and PHI
+. // all other teams take a large_market value of 0, meaning they are a small market teams
+. 
+. // generate log transformed AAV
+. gen logAAV=log(AAV)
+
+. 
+. // Throwing Hand dummy for LHP
+. gen lefty=0
+
+. replace lefty=1 if Thr=="L"
+(50 real changes made)
+
+. 
+. // SP dummy
+. gen SP=0
+
+. replace SP=1 if Pos=="SP"
+(86 real changes made)
+
+. 
+. // using an interaction term for average FB velo with SP and lefty combined
+. 
+. // Regression
+. reg logAAV c.FB_Velo_avg##i.lefty##i.SP Age careerWAR FIP large_market, robust
+
+Linear regression                               Number of obs     =        171
+                                                F(11, 159)        =      20.41
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.4868
+                                                Root MSE          =     .83512
+
+----------------------------------------------------------------------------------------
+                       |               Robust
+                logAAV | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-----------------------+----------------------------------------------------------------
+           FB_Velo_avg |   .1402994   .0634555     2.21   0.028      .014975    .2656237
+               1.lefty |  -4.129312    9.12356    -0.45   0.651    -22.14831    13.88968
+                       |
+   lefty#c.FB_Velo_avg |
+                    1  |   .0441337   .0970544     0.45   0.650    -.1475483    .2358157
+                       |
+                  1.SP |  -1.127167   9.266655    -0.12   0.903    -19.42878    17.17444
+                       |
+      SP#c.FB_Velo_avg |
+                    1  |   .0222271    .097831     0.23   0.821    -.1709888    .2154429
+                       |
+              lefty#SP |
+                  1 1  |   1.138942   12.44805     0.09   0.927     -23.4459    25.72379
+                       |
+lefty#SP#c.FB_Velo_avg |
+                  1 1  |  -.0089535   .1328205    -0.07   0.946    -.2712734    .2533664
+                       |
+                   Age |  -.0007494   .0284334    -0.03   0.979    -.0569052    .0554064
+             careerWAR |   .0204196   .0053309     3.83   0.000     .0098912     .030948
+                   FIP |  -.2611915   .0921477    -2.83   0.005    -.4431828   -.0792002
+          large_market |    .042317   .1285404     0.33   0.742    -.2115498    .2961837
+                 _cons |   2.564902   6.390222     0.40   0.689    -10.05576    15.18557
+----------------------------------------------------------------------------------------
+
+. estat vif
+
+    Variable |       VIF       1/VIF  
+-------------+----------------------
+ FB_Velo_avg |      3.48    0.287501
+     1.lefty |   3791.03    0.000264
+       lefty#|
+          c. |
+ FB_Velo_avg |
+          1  |   3699.31    0.000270
+        1.SP |   2889.97    0.000346
+          SP#|
+          c. |
+ FB_Velo_avg |
+          1  |   2823.81    0.000354
+    lefty#SP |
+        1 1  |   4791.01    0.000209
+    lefty#SP#|
+          c. |
+ FB_Velo_avg |
+        1 1  |   4677.23    0.000214
+         Age |      1.57    0.635242
+   careerWAR |      1.92    0.521980
+         FIP |      1.19    0.839341
+large_market |      1.11    0.900001
+-------------+----------------------
+    Mean VIF |   2061.97
+
+. 
+. // send results to word document
+. outreg2 using "Final_Project_Regression.doc", replace word
+Final_Project_Regression.doc
+dir : seeout
+
+. 
+. // Generating summary statistics
+. sum(AAV FB_Velo_avg lefty SP Age careerWAR FIP large_market)
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+         AAV |        171     8308848     7871280      94000   4.33e+07
+ FB_Velo_avg |        171    93.69532    2.382184       85.3      100.3
+       lefty |        171    .2923977    .4561999          0          1
+          SP |        171     .502924    .5014599          0          1
+         Age |        171    32.97076    2.751314         26         43
+-------------+---------------------------------------------------------
+   careerWAR |        171    12.02222    14.52205        -.7       77.6
+         FIP |        171    3.922339    1.081382       -.71       7.46
+large_market |        171    .3450292    .4767739          0          1
+
+. outreg2 using "Final_Project_Summary.doc", replace sum(log)
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+        year |        171     2023.38    .6699096       2022       2024
+         Age |        171    32.97076    2.751314         26         43
+ ServiceTime |        171    7.583357    3.040261          1     18.057
+       Years |        171    1.707602    1.156516          1          7
+ TotalSalary |        171    1.98e+07    3.16e+07      94000   1.85e+08
+-------------+---------------------------------------------------------
+         AAV |        171     8308848     7871280      94000   4.33e+07
+ Received_QO |        171    .0701754    .2561927          0          1
+  QO_outcome |        171     .005848    .0764719          0          1
+   QO_amount |         91     2574725     6647666          0   2.03e+07
+           W |        171     5.25731    4.280378          0         18
+-------------+---------------------------------------------------------
+           L |        171     4.54386    3.247099          0         15
+          SV |        171    2.111111    5.536451          0         34
+           G |        171    73.25731    44.10487          2        267
+          GS |        171    10.79532    12.41343          0         33
+          IP |        171    84.24386    53.99805        1.1      196.1
+-------------+---------------------------------------------------------
+      K_per9 |        171    9.214971    2.354335        4.8         18
+     BB_per9 |        171    3.133275    1.273657          0          9
+     HR_per9 |        171    1.109181    .5827485          0        4.5
+BABIP_allo~d |        171    .2887836    .0555724          0         .5
+     LOB_pct |        171    .7358421    .0943349       .444          1
+-------------+---------------------------------------------------------
+      GB_pct |        171    .4244795    .0900415          0         .8
+   HR_per_FB |        171     .117076    .0548056          0       .286
+ FB_Velo_avg |        171    93.69532    2.382184       85.3      100.3
+         ERA |        171    3.920643    1.497588          0          9
+         FIP |        171    3.922339    1.081382       -.71       7.46
+-------------+---------------------------------------------------------
+        xFIP |        171    3.980526    .8024574         .1       5.52
+   WAR_pitch |        171    1.184795    1.430673         -1        6.2
+   careerWAR |        171    12.02222    14.52205        -.7       77.6
+     pitcher |        171           1           0          1          1
+large_market |        171    .3450292    .4767739          0          1
+-------------+---------------------------------------------------------
+      logAAV |        171    15.43064    1.127446   11.45105   17.58436
+       lefty |        171    .2923977    .4561999          0          1
+          SP |        171     .502924    .5014599          0          1
+
+Following variable is string, not included:  
+Name  Pos  Bats  Thr  PrevTeam  SigningTeam  team  Following variable has no observation, not included:  
+PA  HR  R  RBI  SB  Walk_Pct  K_pct  ISO  BABIP  AVG  OBP  SLG  wOBA  wRC_plus  BSR  Offense_rating  Defense
+> _Rating  WAR  avgEV  maxEV  Launch_angle  Barrel_pct  HardHit_pct  
+Final_Project_Summary.doc
+dir : seeout
+
+. 
+. // Generate variable to display AAV in millions for mean data
+. gen AAV_m = AAV / 1000000
+
+. 
+. // Display mean AAV (in millions of dollars) by year for SP
+. tabstat AAV_m if SP == 1, by(year) stat(mean) columns(statistics)
+
+Summary for variables: AAV_m
+Group variable: year (Year)
+
+    year |      Mean
+---------+----------
+    2022 |    14.866
+    2023 |  12.72958
+    2024 |  10.49124
+---------+----------
+   Total |  12.11317
+--------------------
+
+. 
+. // Display mean AAV (in millions of dollars) by year for RP
+. tabstat AAV_m if SP == 0, by(year) stat(mean) columns(statistics)
+
+Summary for variables: AAV_m
+Group variable: year (Year)
+
+    year |      Mean
+---------+----------
+    2022 |  7.333333
+    2023 |  4.572595
+    2024 |  4.175422
+---------+----------
+   Total |  4.459765
+--------------------
+
+. 
+. // Display mean Average FB velo (in mph) by year for SP
+. tabstat FB_Velo_avg if SP == 1, by(year) stat(mean) columns(statistics)
+
+Summary for variables: FB_Velo_avg
+Group variable: year (Year)
+
+    year |      Mean
+---------+----------
+    2022 |     92.88
+    2023 |  92.74545
+    2024 |  93.23421
+---------+----------
+   Total |  92.98488
+--------------------
+
+. 
+. // Display mean Average FB velo (in mph) by year for RP
+. tabstat FB_Velo_avg if SP == 0, by(year) stat(mean) columns(statistics)
+
+Summary for variables: FB_Velo_avg
+Group variable: year (Year)
+
+    year |      Mean
+---------+----------
+    2022 |  93.56667
+    2023 |  94.26486
+    2024 |  94.59333
+---------+----------
+   Total |  94.41412
+--------------------
+
+. 
+end of do-file
+
+. exit, clear
