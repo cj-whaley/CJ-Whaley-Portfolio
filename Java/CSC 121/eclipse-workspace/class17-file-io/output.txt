@@ -1,0 +1,3 @@
+High : 78
+Low : 67
+Average : 71

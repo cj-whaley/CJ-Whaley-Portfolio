@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Book.java&apos; to &apos;class12/src&apos;&#x0A;- Original project: &apos;hw11-abstract-behav&apos;&#x0A;- Destination element: &apos;class12/src&apos;&#x0A;- Original element: &apos;Book.java&apos;" description="Copy compilation unit" destination="=class12/src" element1="/src&lt;{Book.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1728047970674" units="1" version="1.0"/>
+</session>
