@@ -1,7 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-class BookTest {
+public class BookTest {
 
 	Author eh = new Author("Hemingway", 1900);
 	Author ebw = new Author("White", 1920);
@@ -19,7 +19,7 @@ class BookTest {
 	ILoB blist4 = new ConsLoB(this.ll, this.blist3);
 
 	@Test
-	void testSalePrice() {
+	public void testSalePrice() {
 		assertEquals(this.oms.salePrice(), 7);
 		assertEquals(this.eos.salePrice(), 16);
 		assertEquals(this.htdp.salePrice(), 60);
@@ -27,14 +27,14 @@ class BookTest {
 	}
 
 	@Test
-	void testWrittenBy() {
+	public void testWrittenBy() {
 		assertEquals(this.htdp.writtenBy(new Author("MF", 1970)), true);
 		assertEquals(this.htdp.writtenBy(new Author("SK", 1975)), false);
 		assertEquals(this.eos.writtenBy(this.ebw), true);
 	}
 
 	@Test
-	void testSelects() {
+	public void testSelects() {
 		// using the abstracted 'select' method
 		assertEquals(this.mtlob, this.mtlob.select(new IsNonFictionPredicate()));
 		assertEquals(new ConsLoB(this.ll, new ConsLoB(this.eos, this.mtlob)),
@@ -45,7 +45,7 @@ class BookTest {
 	}
 
 	@Test
-	void testSelectByAuthor() {
+	public void testSelectByAuthor() {
 		assertEquals(this.mtlob, this.mtlob.selectByAuthor(this.mf));
 		assertEquals(new ConsLoB(this.htdp, this.mtlob),
 				this.blist3.selectByAuthor(this.mf));
