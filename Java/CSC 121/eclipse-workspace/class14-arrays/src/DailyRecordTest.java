@@ -1,14 +1,13 @@
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 
-
-class DailyRecordTest {
+public class DailyRecordTest {
 
     DailyRecord dr = new DailyRecord();
     
     @Test
-    void test() {
+    public void test() {
     //  assertEquals(0, dr.getTemp(10));  // throws correct Runtime Exception
     //  assertEquals(0, dr.getTemp(9));   // throws correct Runtime Exception
         
