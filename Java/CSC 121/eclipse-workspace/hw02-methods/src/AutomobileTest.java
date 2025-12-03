@@ -1,8 +1,7 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-class AutomobileTest {
+public class AutomobileTest {
 
 	Automobile newCar = new Automobile("Toyota" , 30000 , 25.5 , false, 18);
 	Automobile usedCar = new Automobile("Ford" , 12000 , 30.0 , true, 20);

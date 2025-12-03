@@ -50,6 +50,9 @@ class Rational {
 		else if (this.numerator == this.denominator) {
 			return "1";
 		}
+		else if (this.numerator < 0 && this.denominator < 0) {
+			return (-this.numerator) + "/" + (-this.denominator);
+		}
 		else {
 			return this.numerator + "/" + this.denominator;
 		}

@@ -1,8 +1,7 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-class RationalTest {
+public class RationalTest {
 
 	Rational x = new Rational (13,28);
 	Rational y = new Rational (3,7);
@@ -18,7 +17,7 @@ class RationalTest {
 
 	
 	@Test
-	void testToString() {
+	public void testToString() {
 		assertEquals("22", this.a.toString());
 		assertEquals("1", this.b.toString());
 		assertEquals("0", this.c.toString());
@@ -31,7 +30,7 @@ class RationalTest {
 	}
 	
 	@Test
-	void testPlus() {
+	public void testPlus() {
 		Rational x1 = new Rational(1, 2);
 		Rational x2 = new Rational(1, 3);
 		Rational x1_plus_2 = x1.plus(x2);  // 1/2 + 1/3 = 5/6
@@ -47,7 +46,7 @@ class RationalTest {
 	}
 	
 	@Test
-	void testMinus() {
+	public void testMinus() {
 		Rational x1 = new Rational(1, 2);
 		Rational x2 = new Rational(1, 3);
 		Rational x1_minus_2 = x1.minus(x2);  // 1/2 - 1/3 = 1/6
@@ -63,7 +62,7 @@ class RationalTest {
 	}
 	
 	@Test
-	void testTimes() {
+	public void testTimes() {
 		Rational x1 = new Rational(1, 2);
 		Rational x2 = new Rational(1, 3);
 		Rational x1_times_2 = x1.times(x2);  // 1/2 * 1/3 = 1/6
@@ -79,7 +78,7 @@ class RationalTest {
 	}
 	
 	@Test
-	void testDividedBy() {
+	public void testDividedBy() {
 		Rational x1 = new Rational(1, 2);
 		Rational x2 = new Rational(1, 3);
 		Rational x1_dividedBy_2 = x1.dividedBy(x2);  // 1/2 / 1/3 = 3/2
