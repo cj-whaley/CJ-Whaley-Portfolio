@@ -1,9 +1,7 @@
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
-class BookTest {
+public class BookTest {
 
 	Author eh = new Author("Hemingway", 1900);
 	Author ebw = new Author("White", 1920);
@@ -21,7 +19,7 @@ class BookTest {
 	ILoB blist4 = new ConsLoB(this.ll, this.blist3);
 
 	@Test
-	void testSalePrice() {
+	public void testSalePrice() {
 		assertEquals(this.oms.salePrice(), 7);
 		assertEquals(this.eos.salePrice(), 16);
 		assertEquals(this.htdp.salePrice(), 60);
@@ -29,7 +27,7 @@ class BookTest {
 	}
 
 	@Test
-	void testWrittenBy() {
+	public void testWrittenBy() {
 		assertEquals(this.htdp.writtenBy(new Author("MF", 1970)), true);
 		assertEquals(this.htdp.writtenBy(new Author("SK", 1975)), false);
 		assertEquals(this.eos.writtenBy(this.ebw), true);
@@ -37,14 +35,14 @@ class BookTest {
 
 
 	@Test
-	void testTotalPrice() {
+	public void testTotalPrice() {
 		assertEquals(this.mtlob.totalPrice(), 0);
 		assertEquals(this.blist2.totalPrice(), 76);
 		assertEquals(this.blist3.totalPrice(), 83);
 	}
 
 	@Test
-	void testSortByPrice() {
+	public void testSortByPrice() {
 		assertEquals(this.mtlob.sortByPrice(), new MTLoB());
 		assertEquals(this.blist2.sortByPrice(), this.blist2sorted);
 		assertEquals(this.blist3.sortByPrice(), 
