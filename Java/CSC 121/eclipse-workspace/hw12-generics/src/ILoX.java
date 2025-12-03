@@ -96,7 +96,7 @@ class Cons<T> implements ILoX<T> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cons other = (Cons) obj;
+		Cons<?> other = (Cons<?>) obj;
 		return Objects.equals(first, other.first) && Objects.equals(rest, other.rest);
 	}
 	
