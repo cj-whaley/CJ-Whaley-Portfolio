@@ -1,20 +1,20 @@
 
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 
-class DailyRecordTest {
+public class DailyRecordTest {
     
 
     @Test
-    void testArbitraryDailyRecords() {
+    public void testArbitraryDailyRecords() {
         testSetArbitrary(new BasicDailyRecord());
         //testSetArbitrary(new ParallelDailyRecord());
     }
     
     @Test
-    void testSeqDailyRecords() {
+    public void testSeqDailyRecords() {
         //testSetSequential(new SeqDailyRecord());
     }
 
@@ -31,7 +31,7 @@ class DailyRecordTest {
      * This method should be called with an initially 
      * empty daily record
      */
-    void testSetSequential(IDailyRecord dr) {
+    public void testSetSequential(IDailyRecord dr) {
         assertThrows(IllegalArgumentException.class, () -> dr.getTemp(10));
         assertThrows(IllegalArgumentException.class, () -> dr.getTemp(21));
         assertThrows(IllegalStateException.class, () -> dr.getHigh());
@@ -71,7 +71,7 @@ class DailyRecordTest {
      * This method should be called with an initially 
      * empty daily record
      */
-    void testSetArbitrary(IDailyRecord dr) {
+    public void testSetArbitrary(IDailyRecord dr) {
         assertThrows(IllegalArgumentException.class, () -> dr.getTemp(10));
         assertThrows(IllegalArgumentException.class, () -> dr.getTemp(21));
         assertThrows(IllegalStateException.class, () -> dr.getHigh());
