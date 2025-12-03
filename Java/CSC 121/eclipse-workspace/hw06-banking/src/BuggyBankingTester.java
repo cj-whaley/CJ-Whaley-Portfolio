@@ -1,7 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-class BuggyBankingTester {
+public class BuggyBankingTester {
   buggy.IAccount as = new buggy.Checking("Adam Smith", 123, 150, 50);
   buggy.IAccount bj = new buggy.Savings("Betty Jones", 456, 120, 2.5);
   buggy.IAccount pt1 = new buggy.CD("Pat Malloy", 334, 300, false);
@@ -9,10 +9,10 @@ class BuggyBankingTester {
 
   @Test
   public void testAmtAvailable() {
-      assertEquals(100, this.as.amtAvailable());
-      assertEquals(120, this.bj.amtAvailable());
-      //assertEquals(0, this.pt1.amtAvailable());  
-      assertEquals(300, this.pt2.amtAvailable()); 
+      assertEquals(100, this.as.amtAvailable(), 0);
+      assertEquals(120, this.bj.amtAvailable(), 0);
+      //assertEquals(0, this.pt1.amtAvailable(), 0);  
+      assertEquals(300, this.pt2.amtAvailable(), 0); 
       /*
        *  The bug is in the amtAvailable method in the CD class 
        *  CD accounts must be mature before any funds can be withdrawn. pt1 is not fully

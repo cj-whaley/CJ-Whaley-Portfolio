@@ -1,8 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-class IAccountTest {
+public class IAccountTest {
 
 	Checking AS = new Checking("Aubrey Smith", 123, 150, 50);
 	Savings BJ = new Savings("Bailey Jones", 456, 120, 2.5);
@@ -12,7 +11,7 @@ class IAccountTest {
 	Checking SM = new Checking("Sean Murphy", 223, 300, 300);
 
 	@Test
-	void testAmtAvailable() {
+	public void testAmtAvailable() {
 		assertEquals(100, this.AS.amtAvailable());
 		assertEquals(120, this.BJ.amtAvailable());
 		assertEquals(0, this.PM.amtAvailable());
@@ -22,7 +21,7 @@ class IAccountTest {
 	}
 	
 	@Test
-	void testMoreAvailable() {
+	public void testMoreAvailable() {
 		assertEquals(false, this.AS.moreAvailable(BJ));
 		assertEquals(true, this.AS.moreAvailable(AR));
 		assertEquals(true, this.BJ.moreAvailable(AS));
@@ -32,7 +31,7 @@ class IAccountTest {
 	}
 	
 	@Test
-	void testWithdraw() {
+	public void testWithdraw() {
 		assertEquals(AS, this.AS.withdraw(250));
 		assertEquals(new Checking("Aubrey Smith", 123, 100, 50), this.AS.withdraw(50));
 		assertEquals(BJ, this.BJ.withdraw(250));
