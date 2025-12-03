@@ -1,8 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-class BooksTest {
+public class BooksTest {
     
     IBook oms = new PrintBook("Old Man and the Sea", "EH", 10);
     IBook eos = new PrintBook("Elements of Style", "EBW", 20);
@@ -15,7 +14,7 @@ class BooksTest {
 
     
     @Test
-    void testSalePrice() {
+    public void testSalePrice() {
         assertEquals(7,  this.oms.salePrice());
         assertEquals(8,  this.omsAudio.salePrice());
         assertEquals(10, this.omsOnline.salePrice());
