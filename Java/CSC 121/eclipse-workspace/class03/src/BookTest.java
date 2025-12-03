@@ -1,7 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-class BookTest {
+public class BookTest {
 			// remote controls
     Author eh = new Author("Hemingway", 1900);
     Author ebw = new Author("White", 1920);

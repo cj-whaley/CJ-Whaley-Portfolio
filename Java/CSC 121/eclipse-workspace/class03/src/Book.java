@@ -51,7 +51,7 @@ class Book {
 
     /** was the author of this book born before the author of that book? */
     public boolean olderAuthor(Book that) { 
-        return false;
+        return this.author.bornBefore(that.author);
     }
 }
 
@@ -82,6 +82,6 @@ class Author{
 
     /** was this author born before the given author? */
     public boolean bornBefore(Author that) {
-        return false;
+        return this.yob < that.yob;
     }
 }
