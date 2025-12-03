@@ -2,10 +2,10 @@
  * @author cjwhaley
  */
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-class BookTest {
+public class BookTest {
   
   Author eh = new Author("Hemingway", 1900);
   Author ebw = new Author("White", 1920);
@@ -23,7 +23,7 @@ class BookTest {
   ILoB blist4 = new ConsLoB(this.ll, this.blist3);
   
   @Test
-  void testSalePrice() {
+  public void testSalePrice() {
     assertEquals(this.oms.salePrice(), 7);
     assertEquals(this.eos.salePrice(), 16);
     assertEquals(this.htdp.salePrice(), 60);
@@ -31,7 +31,7 @@ class BookTest {
   }
   
   @Test
-  void testWrittenBy() {
+  public void testWrittenBy() {
     assertEquals(this.htdp.writtenBy(new Author("MF", 1970)), true);
     assertEquals(this.htdp.writtenBy(new Author("SK", 1975)), false);
     assertEquals(this.eos.writtenBy(this.ebw), true);
@@ -39,7 +39,7 @@ class BookTest {
   
   
   @Test
-  void testTotalPrice() {
+  public void testTotalPrice() {
     assertEquals(this.mtlob.totalPrice(), 0);
     assertEquals(this.blist2.totalPrice(), 76);
     assertEquals(this.blist3.totalPrice(), 83);
@@ -47,7 +47,7 @@ class BookTest {
   
   
   @Test
-  void testSortByPrice() {
+  public void testSortByPrice() {
     assertEquals(this.mtlob.sortByPrice(), new MTLoB());
     assertEquals(this.blist2.sortByPrice(), this.blist2sorted);
     assertEquals(this.blist3.sortByPrice(), 
@@ -56,7 +56,7 @@ class BookTest {
   
   
   @Test
-  void testInsertByPrice() {
+  public void testInsertByPrice() {
     assertEquals(this.blist2sorted.insertByPrice(this.oms), 
                   new ConsLoB(this.oms, this.blist2sorted));
     assertEquals(this.blist2sorted.insertByPrice(this.ll),
@@ -66,7 +66,7 @@ class BookTest {
   }
   
   @Test
-  void testSelectByAuthor() {
+  public void testSelectByAuthor() {
     assertEquals(this.mtlob.selectByAuthor(this.mf), this.mtlob);
     assertEquals(this.blist3.selectByAuthor(this.mf),
                   new ConsLoB(this.htdp, this.mtlob));
@@ -77,7 +77,7 @@ class BookTest {
 
   
   @Test
-  void testCheapest() {
+  public void testCheapest() {
     assertEquals(this.blist2.cheapestBook(), this.eos);
     assertEquals(this.blist4.cheapestBook(), this.oms);
     // assertEquals(this.mtlob.cheapestBook(), this.htdp); // runtime error

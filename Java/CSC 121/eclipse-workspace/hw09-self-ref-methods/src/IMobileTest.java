@@ -2,8 +2,8 @@
  * @author cjwhaley
  */
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 
 /*
@@ -48,7 +48,7 @@ import org.junit.jupiter.api.Test;
 
 import static java.awt.Color.*;
 
-class IMobileTest {
+public class IMobileTest {
     
     IMobile simple1 = new Simple(20, 10, BLUE);
     IMobile simple2 = new Simple(30, 40, GREEN);
@@ -65,7 +65,7 @@ class IMobileTest {
     
     
     @Test
-    void testTotalWeight() {
+    public void testTotalWeight() {
         assertEquals(10, this.simple1.totalWeight());
         assertEquals(20, this.complex1.totalWeight());
         assertEquals(60, this.complex2.totalWeight());
@@ -73,14 +73,14 @@ class IMobileTest {
     }
     
     @Test
-    void testHeight() {
+    public void testHeight() {
         assertEquals(20, simple1.height());
         assertEquals(60, complex2.height());
         assertEquals(80, complex3.height());
     }
     
     @Test
-    void testTorque() {
+    public void testTorque() {
         assertEquals(0, simple2.torque());
         assertEquals(0, complex1.torque());
         assertEquals(0, complex2.torque());
@@ -88,7 +88,7 @@ class IMobileTest {
     }
     
     @Test
-    void testIsBalanced() {
+    public void testIsBalanced() {
         assertTrue(simple2.isBalanced());
         assertTrue(complex1.isBalanced());
         assertTrue(complex2.isBalanced());
