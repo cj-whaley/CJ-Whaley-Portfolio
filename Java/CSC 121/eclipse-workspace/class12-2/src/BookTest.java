@@ -1,8 +1,8 @@
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-class BookTest {
+public class BookTest {
 
 	Author eh = new Author("Hemingway", 1900);
 	Author ebw = new Author("White", 1920);
@@ -20,7 +20,7 @@ class BookTest {
 	ILoB blist4 = new ConsLoB(this.ll, this.blist3);
 
 	@Test
-	void testSalePrice() {
+	public void testSalePrice() {
 		assertEquals(this.oms.salePrice(), 7);
 		assertEquals(this.eos.salePrice(), 16);
 		assertEquals(this.htdp.salePrice(), 60);
@@ -28,14 +28,14 @@ class BookTest {
 	}
 
 	@Test
-	void testWrittenBy() {
+	public void testWrittenBy() {
 		assertEquals(this.htdp.writtenBy(new Author("MF", 1970)), true);
 		assertEquals(this.htdp.writtenBy(new Author("SK", 1975)), false);
 		assertEquals(this.eos.writtenBy(this.ebw), true);
 	}
 
 	@Test
-	void testSelectsPred() {
+	public void testSelectsPred() {
 		assertEquals(this.mtlob, this.mtlob.select(new NonFictionPredicate()));
 		assertEquals(this.mtlob, this.mtlob.select(new Under20Predicate()));
 
@@ -53,7 +53,7 @@ class BookTest {
 	}
 	
 	@Test
-	void testMin() {
+	public void testMin() {
 		assertEquals( oms, blist4.min(new BookPriceComparator() ));
 	}
 

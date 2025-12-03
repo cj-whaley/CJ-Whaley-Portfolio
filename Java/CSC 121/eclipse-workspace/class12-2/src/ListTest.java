@@ -1,8 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-class ListTest {
+public class ListTest {
 
 Author eh = new Author("Hemingway", 1900);
 Author ebw = new Author("White", 1920);
@@ -25,7 +24,7 @@ new Cons<Author>(ebw,
 
 
 @Test
-void test() {
+public void test() {
 
 
 assertEquals( new Cons<Author>(mf, new MT<Author>())  ,
