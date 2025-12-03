@@ -13,6 +13,7 @@ public class RecordProcessor {
 		// get user's input from "standard input" --- usually the keyboard
 		Scanner kb = new Scanner(System.in);
 		String filename = kb.nextLine();
+		kb.close();
 		
 		System.out.println("Reading from: " + filename + "...");
 		
