@@ -1,8 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-class FileTests {
+public class FileTests {
 
     IFile text = new TextFile("Files.java", "nah", 2048);
     IFile img = new ImageFile("photo.jpg", "tapia", 640, 480);
@@ -12,7 +11,7 @@ class FileTests {
     IFile aud2 = new AudioFile("song.mp3", "knapp", 2, 18);
 
     @Test
-    // Test the size method
+
     public void testSize() {
         assertEquals(2048, this.text.size());
         assertEquals(307200, this.img.size());
