@@ -1,11 +1,10 @@
 /**
  * @author cjwhaley
  */
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-class ShapesTest {
+public class ShapesTest {
     IShape s = new Square(new Posn(200,100), 50.0);
     IShape c = new Circle(new Posn(225,125), 25.0);
     IShape t1 = new sideTriangle(new Posn(100,100), 20.0);
@@ -25,10 +24,10 @@ class ShapesTest {
     public void testArea() {
         assertEquals(2500.0, this.s.area(), 0.1);
         assertEquals(1963.5, this.c.area(), 0.1);
-        assertEquals(200.0, this.t1.area());
-        assertEquals(612.5, this.t2.area());
-        assertEquals(450.0, this.t3.area());
-        assertEquals(800.0, this.t4.area());
+        assertEquals(200.0, this.t1.area(), 0.1);
+        assertEquals(612.5, this.t2.area(), 0.1);
+        assertEquals(450.0, this.t3.area(), 0.1);
+        assertEquals(800.0, this.t4.area(), 0.1);
     }
 
     @Test
@@ -60,15 +59,15 @@ class ShapesTest {
     
     @Test
     public void testSlope() {
-    	assertEquals(-1.0 , new Posn(100,120).slope(new Posn(110,110)));
+    	assertEquals(-1.0 , new Posn(100,120).slope(new Posn(110,110)), 0.1);
     	assertEquals(-0.6, this.A.slope(B), 0.1);
-    	assertEquals(-0.75, this.C.slope(D));
+    	assertEquals(-0.75, this.C.slope(D), 0.1);
     }
     
     @Test 
     public void testPerimeter() {
-    	assertEquals(200.0, this.s.perimeter());
-    	assertEquals(40.0, new Square(A, 10.0).perimeter());
+    	assertEquals(200.0, this.s.perimeter(), 0.1);
+    	assertEquals(40.0, new Square(A, 10.0).perimeter(), 0.1);
     	assertEquals(157.1, this.c.perimeter(), 0.1);
     	assertEquals(62.8, new Circle(D, 10.0).perimeter(), 0.1);
     	assertEquals(68.3, this.t1.perimeter(), 0.1);

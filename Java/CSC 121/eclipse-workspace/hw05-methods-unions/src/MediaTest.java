@@ -2,11 +2,10 @@
  * @author cjwhaley
  */
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-class MediaTest {
+public class MediaTest {
     
     IMedia i1 = new Image("flower.gif", 57234, 100, 50, "medium");
     IMedia t1 = new Text("welcome.txt", 5312, 830);
@@ -16,7 +15,7 @@ class MediaTest {
     IMedia s2 = new Sound("pow.mp3", 68240, 2);
 
     @Test
-	void testTimeToDownload() {
+	public void testTimeToDownload() {
 		assertEquals(5723, this.i1.timeToDownload(10));
 		assertEquals(5312, this.t1.timeToDownload(1));
 		assertEquals(2048, this.s1.timeToDownload(20));
@@ -27,7 +26,7 @@ class MediaTest {
 	}
     
     @Test
-	void testSmallerThan() {
+	public void testSmallerThan() {
 		assertTrue(this.i1.smallerThan(60000));
 		assertTrue(this.i1.smallerThan(57235));
 		assertFalse(this.i1.smallerThan(57234));
@@ -40,7 +39,7 @@ class MediaTest {
 	}
     
     @Test
-	void testSameName() {
+	public void testSameName() {
 		assertTrue(this.i1.sameName("flower.gif"));
 		assertFalse(this.i1.sameName("flower"));
 		assertFalse(this.i1.sameName("flower.png"));
