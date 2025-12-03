@@ -1,11 +1,10 @@
 /**
  * @author cjwhaley
  */
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-class IMobileTest {
+public class IMobileTest {
 
 	IMobile simpleMobile = new MobileEnd(2, 10, "blue");
 	IMobile complexMobile = new MobileStrut(4, 13, 
@@ -19,7 +18,7 @@ class IMobileTest {
 					new MobileStrut(5, 3, simpleMobile, 8, simpleMobile)));
 
 	@Test
-	void test() {
+	public void test() {
 		fail("Not yet implemented");
 	}
 
