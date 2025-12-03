@@ -1,8 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-
-class BookTest {
+public class BookTest {
 
 	Author knuth = new Author("Donald E. Knuth", 1938);
 	Book taocp = new Book("The Art of Computer Programming (volume 1)", 100, 2, knuth);
@@ -13,7 +12,7 @@ class BookTest {
 	Author tardos = new Author("Eva Tardos", 1957);
 	Book ad = new Book("Algorithm Design", 150, 3, tardos);
 	@Test
-	void test() {
+	public void test() {
 		
 		this.knuth.book = taocp;
 		
@@ -25,7 +24,7 @@ class BookTest {
 	}
 	
 	@Test
-	void testAddBook() {
+	public void testAddBook() {
 		// testing void methods
 		// since they do not return anything
 		
