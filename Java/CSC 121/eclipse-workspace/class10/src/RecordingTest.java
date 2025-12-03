@@ -1,7 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-class RecordingTest {
+public class RecordingTest {
  
     Pressure p1 = new Pressure(1200, 1015, 900);
     Temperature t1 = new Temperature(75, 65, 50);
