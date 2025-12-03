@@ -1,11 +1,12 @@
 package class08;
 
-import java.util.Objects;
-
 /**
  * represents an ancestral tree (family tree)
  */
 public interface IAT {
+
+	// produce the number of people in this tree with the given name
+	public int countName(String checkName);
 
 }
 
@@ -15,6 +16,11 @@ public interface IAT {
  *   or a branch of the tree we know nothing about
  */
 class Unknown implements IAT {
+
+	// produce the number of people in this tree with the given name
+	public int countName(String checkName) {
+		return 0;
+	}
 	
 	@Override
 	public boolean equals(Object other) {
@@ -39,21 +45,34 @@ class Unknown implements IAT {
  */
 class Person implements IAT {
 	String name;
-	int yob;
 	IAT mother;
 	IAT father;
 	
-	Person(String name, int yob, IAT mother, IAT father) {
+	Person(String name, IAT mother, IAT father) {
 		super();
 		this.name = name;
-		this.yob = yob;
 		this.mother = mother;
 		this.father = father;
 	}
 
+	// produce the number of people in this tree with the given name
+	public int countName(String checkName) {
+		if (this.name.equals(checkName)) {
+			return 1 + this.mother.countName(checkName) + this.father.countName(checkName);
+		}
+		else {
+			return this.mother.countName(checkName) + this.father.countName(checkName);
+		}
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(father, mother, name, yob);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((mother == null) ? 0 : mother.hashCode());
+		result = prime * result + ((father == null) ? 0 : father.hashCode());
+		return result;
 	}
 
 	@Override
@@ -65,23 +84,36 @@ class Person implements IAT {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		return Objects.equals(father, other.father) && Objects.equals(mother, other.mother)
-				&& Objects.equals(name, other.name) && yob == other.yob;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (mother == null) {
+			if (other.mother != null)
+				return false;
+		} else if (!mother.equals(other.mother))
+			return false;
+		if (father == null) {
+			if (other.father != null)
+				return false;
+		} else if (!father.equals(other.father))
+			return false;
+		return true;
 	}
 
 	// OVERLOADING the constructor
 	//  define more than one version of the same constructor/method 
 	//  with different signatures/headers/parameters
-	public Person(String name, int yob) {
+	public Person(String name) {
 		this.name = name;
-		this.yob = yob;
 		this.mother = new Unknown();
 		this.father = new Unknown();
 	}
 	
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", yob=" + yob + ", mother=" + mother + ", father=" + father + "]";
+		return "Person [name=" + name + ", mother=" + mother + ", father=" + father + "]";
 	}
 	
 	
