@@ -1,5 +1,6 @@
 {
   "java.project.referencedLibraries": [
-    "lib/core.jar"
+    "lib/core.jar",
+    "test-lib/**/*.jar"
   ]
 }
