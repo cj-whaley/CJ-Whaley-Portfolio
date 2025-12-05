@@ -40,7 +40,7 @@ public class BlackjackWorldTest {
 
         Hand expected = new Hand(new ArrayList<Card>(Arrays.asList(
             new Card(Color.RED, "Hearts", '2', false),
-            new Card(Color.RED, "Hearts", '2', true)
+            new Card(Color.RED, "Hearts", 'A', true)
         )), new Posn(100, 100));
 
         assertEquals(expected, tester.addCard(testDeck));
