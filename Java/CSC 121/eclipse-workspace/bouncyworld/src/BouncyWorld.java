@@ -50,7 +50,7 @@ public class BouncyWorld implements IWorld {
         c.noStroke();  // no outline
         c.fill(255, 0, 0); // (R, G, B) = "red"
         c.circle(this.anchor.getX(), this.anchor.getY(), 10);
-        c.imageMode(c.CENTER);
+        c.imageMode(PConstants.CENTER);
         c.image(c.loadImage("green_blob.gif"), this.blob.getX(), this.blob.getY());
         return c;
     }

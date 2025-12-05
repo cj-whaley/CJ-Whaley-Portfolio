@@ -119,7 +119,7 @@ public class TileWorld {
      * Does nothing if no tiles under the given point.
      */
     public void lower(int x, int y) {
-        // TODO 
+         
         
     }
     
@@ -129,7 +129,7 @@ public class TileWorld {
      * Does nothing if no tiles under the given point.
      */    
     public void delete(int x, int y) {
-        // TODO 
+        
         
     }
     
@@ -138,7 +138,7 @@ public class TileWorld {
      * Removes all tiles that fall under the given point.
      */    
     public void deleteAll(int x, int y) {
-        // TODO 
+        
     	
     	ArrayList<Tile> toRemove = new ArrayList<>();
     	

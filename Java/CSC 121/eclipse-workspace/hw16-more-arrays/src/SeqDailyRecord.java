@@ -24,7 +24,7 @@ public class SeqDailyRecord implements IDailyRecord {
 
 	@Override
 	public void recordTemp(int hour, int temp) {
-		if (hour > this.count) {    // TODO: need to make sure hour doesn't go above 24
+		if (hour > this.count) {    
 			throw new IllegalArgumentException(hour + " out of range; reading count: " + this.count);
 		} 
 		else if(hour < 0) {
